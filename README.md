@@ -1,6 +1,5 @@
-# Defects and Boundaries on the Cubic Code
-
-Source code for paper *'Defects and Boundaries on the Cubic Code'* (link TBC) 
+Source code for paper *'No Strings Attached: Boundaries and Defects in the
+Cubic Code"*
 
 ## Contents 
 - `functions.jl`: Julia functions used to compute properties of the Cubic Code
