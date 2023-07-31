@@ -14591,7 +14591,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">AbstractAlgebra</span><span class="w"> </span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">AbstractAlgebra</span><span class="p">,</span><span class="w"> </span><span class="n">ColorSchemes</span><span class="p">,</span><span class="w"> </span><span class="n">Gadfly</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="n">Cairo</span><span class="p">,</span><span class="w"> </span><span class="n">Fontconfig</span><span class="w"></span>
+
+<span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CMU Serif&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Theme</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="n">mm</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">point_size</span><span class="o">=</span><span class="mi">1</span><span class="n">mm</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">major_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">major_label_font_size</span><span class="o">=</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">minor_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">minor_label_font_size</span><span class="o">=</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">key_title_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">key_title_font_size</span><span class="o">=</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">key_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">key_label_font_size</span><span class="o">=</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">discrete_highlight_color</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">continuous_highlight_color</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="s">&quot;black&quot;</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="n">Gadfly</span><span class="o">.</span><span class="n">push_theme</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span><span class="w"></span>
 <span class="n">include</span><span class="p">(</span><span class="s">&quot;functions.jl&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 
@@ -14776,7 +14790,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We can also restrict attention to just a subsystem of the lattice, satisfying the particular coordinate condition. Note that the lattice spans from $1 \leq x \leq L_x$ etc.</p>
+<p>We can also restrict attention to just a subspace of the lattice, satisfying the particular coordinate condition. Note that the lattice spans from $1 \leq x \leq L_x$ etc.</p>
 
 </div>
 </div>
@@ -14836,7 +14850,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14844,37 +14858,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gadfly</span><span class="p">,</span><span class="w"> </span><span class="n">ColorSchemes</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="n">Cairo</span><span class="p">,</span><span class="w"> </span><span class="n">Fontconfig</span><span class="w"></span>
-
-<span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CMU Serif&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="n">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Theme</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="n">mm</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">point_size</span><span class="o">=</span><span class="mi">1</span><span class="n">mm</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">major_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">major_label_font_size</span><span class="o">=</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">minor_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">minor_label_font_size</span><span class="o">=</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">key_title_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">key_title_font_size</span><span class="o">=</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">key_label_font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span><span class="w"> </span><span class="n">key_label_font_size</span><span class="o">=</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">discrete_highlight_color</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">continuous_highlight_color</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="s">&quot;black&quot;</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
-<span class="n">Gadfly</span><span class="o">.</span><span class="n">push_theme</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">plotLogical</span><span class="p">(</span><span class="n">lZ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">dim</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="n">mm</span><span class="p">])</span><span class="w"></span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">plotLogical</span><span class="p">(</span><span class="n">lZ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">dim</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Z&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="n">mm</span><span class="p">])</span><span class="w"></span>
 </pre></div>
 
      </div>
@@ -14892,7 +14876,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
 
 
@@ -14909,183 +14893,179 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      stroke-width="0.3"
      font-size="3.88"
 
-     id="img-d8091abc">
+     id="img-9b208edd">
 <defs>
   <marker id="arrow" markerWidth="15" markerHeight="7" refX="5" refY="3.5" orient="auto" markerUnits="strokeWidth">
     <path d="M0,0 L15,3.5 L0,7 z" stroke="context-stroke" fill="context-stroke"/>
   </marker>
 </defs>
-<g class="plotroot xscalable yscalable" id="img-d8091abc-1">
-  <g font-size="3.88" font-family="CMU Serif" fill="#564A55" stroke="#000000" stroke-opacity="0.000" id="img-d8091abc-2">
-    <g transform="translate(70.35,90.33)">
+<g class="plotroot xscalable yscalable" id="img-9b208edd-1">
+  <g font-size="3.88" font-family="CMU Serif" fill="#564A55" stroke="#000000" stroke-opacity="0.000" id="img-9b208edd-2">
+    <g transform="translate(71.71,90.33)">
       <g class="primitive">
         <text text-anchor="middle" dy="0.6em">x</text>
       </g>
     </g>
   </g>
-  <g class="guide xlabels" font-size="3.88" font-family="CMU Serif" fill="#6C606B" id="img-d8091abc-3">
-    <g transform="translate(19.98,86.33)" gadfly:scale="1.0" visibility="visible">
+  <g class="guide xlabels" font-size="3.88" font-family="CMU Serif" fill="#6C606B" id="img-9b208edd-3">
+    <g transform="translate(20.06,86.33)" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="middle" dy="-0em">1</text>
       </g>
     </g>
-    <g transform="translate(53.56,86.33)" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(54.5,86.33)" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="middle" dy="-0em">2</text>
       </g>
     </g>
-    <g transform="translate(87.14,86.33)" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(88.93,86.33)" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="middle" dy="-0em">3</text>
       </g>
     </g>
-    <g transform="translate(120.72,86.33)" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(123.37,86.33)" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="middle" dy="-0em">4</text>
       </g>
     </g>
   </g>
-  <g class="guide colorkey" id="img-d8091abc-4">
-    <g fill="#4C404B" font-size="4.23" font-family="CMU Serif" id="img-d8091abc-5">
-      <g transform="translate(131.1,44.47)" id="img-d8091abc-6">
+  <g class="guide colorkey" id="img-9b208edd-4">
+    <g fill="#4C404B" font-size="4.23" font-family="CMU Serif" id="img-9b208edd-5">
+      <g transform="translate(132.76,43.83)" id="img-9b208edd-6" class="color_ZI">
         <g class="primitive">
-          <text dy="0.35em">σ</text>
+          <text dy="0.35em">ZI</text>
         </g>
       </g>
-      <g transform="translate(131.1,48.49)" id="img-d8091abc-7">
+      <g transform="translate(132.76,47.72)" id="img-9b208edd-7" class="color_IZ">
         <g class="primitive">
-          <text dy="0.35em">μ</text>
+          <text dy="0.35em">IZ</text>
         </g>
       </g>
     </g>
-    <g stroke-width="0.3" id="img-d8091abc-8">
-      <g stroke="#000000" fill-opacity="1" fill="#D4CA3A" id="img-d8091abc-9">
-        <g transform="translate(128.09,48.49)" id="img-d8091abc-10">
-          <path d="M-0.71,-0.71 L-0.71,0.71 0.71,0.71 0.71,-0.71  z" class="primitive"/>
-        </g>
+    <g fill-opacity="1" id="img-9b208edd-8">
+      <g transform="translate(130.78,43.83)" id="img-9b208edd-9" stroke="#000000" fill="#B053EC" class="color_ZI">
+        <path d="M-0.97,-0.97 L0.97,-0.97 0.97,0.97 -0.97,0.97  z" class="primitive"/>
       </g>
-      <g stroke="#000000" fill-opacity="1" fill="#00BFFF" id="img-d8091abc-11">
-        <g transform="translate(128.09,44.47)" id="img-d8091abc-12">
-          <circle cx="0" cy="0" r="1" class="primitive"/>
-        </g>
+      <g transform="translate(130.78,47.72)" id="img-9b208edd-10" stroke="#000000" fill="#7ECC5F" class="color_IZ">
+        <path d="M-0.97,-0.97 L0.97,-0.97 0.97,0.97 -0.97,0.97  z" class="primitive"/>
       </g>
     </g>
-    <g fill="#362A35" font-size="4.23" font-family="CMU Serif" stroke="#000000" stroke-opacity="0.000" id="img-d8091abc-13">
-      <g transform="translate(127.08,40.96)" id="img-d8091abc-14">
+    <g fill="#362A35" font-size="4.23" font-family="CMU Serif" stroke="#000000" stroke-opacity="0.000" id="img-9b208edd-11">
+      <g transform="translate(129.81,37.94)" id="img-9b208edd-12">
         <g class="primitive">
-          <text dy="-0em">Qubit</text>
+          <text dy="-0em"></text>
         </g>
       </g>
     </g>
   </g>
-  <g clip-path="url(#img-d8091abc-15)">
-    <g id="img-d8091abc-16">
-      <g pointer-events="visible" stroke-width="0.3" fill="#000000" fill-opacity="0.000" stroke="#000000" stroke-opacity="0.000" class="guide background" id="img-d8091abc-17">
-        <g transform="translate(70.35,43.83)" id="img-d8091abc-18">
-          <path d="M-55.73,-38.83 L55.73,-38.83 55.73,38.83 -55.73,38.83  z" class="primitive"/>
+  <g clip-path="url(#img-9b208edd-13)">
+    <g id="img-9b208edd-14">
+      <g pointer-events="visible" stroke-width="0.3" fill="#000000" fill-opacity="0.000" stroke="#000000" stroke-opacity="0.000" class="guide background" id="img-9b208edd-15">
+        <g transform="translate(71.71,43.83)" id="img-9b208edd-16">
+          <path d="M-57.1,-38.83 L57.1,-38.83 57.1,38.83 -57.1,38.83  z" class="primitive"/>
         </g>
       </g>
-      <g class="guide ygridlines xfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="img-d8091abc-19">
-        <g transform="translate(70.35,78.35)" id="img-d8091abc-20" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M-55.73,0 L55.73,0 " class="primitive"/>
+      <g class="guide ygridlines xfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="img-9b208edd-17">
+        <g transform="translate(71.71,78.35)" id="img-9b208edd-18" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M-57.1,0 L57.1,0 " class="primitive"/>
         </g>
-        <g transform="translate(70.35,55.34)" id="img-d8091abc-21" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M-55.73,0 L55.73,0 " class="primitive"/>
+        <g transform="translate(71.71,55.34)" id="img-9b208edd-19" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M-57.1,0 L57.1,0 " class="primitive"/>
         </g>
-        <g transform="translate(70.35,32.32)" id="img-d8091abc-22" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M-55.73,0 L55.73,0 " class="primitive"/>
+        <g transform="translate(71.71,32.32)" id="img-9b208edd-20" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M-57.1,0 L57.1,0 " class="primitive"/>
         </g>
-        <g transform="translate(70.35,9.3)" id="img-d8091abc-23" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M-55.73,0 L55.73,0 " class="primitive"/>
-        </g>
-      </g>
-      <g class="guide xgridlines yfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="img-d8091abc-24">
-        <g transform="translate(19.98,43.83)" id="img-d8091abc-25" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
-        </g>
-        <g transform="translate(53.56,43.83)" id="img-d8091abc-26" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
-        </g>
-        <g transform="translate(87.14,43.83)" id="img-d8091abc-27" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
-        </g>
-        <g transform="translate(120.72,43.83)" id="img-d8091abc-28" gadfly:scale="1.0" visibility="visible">
-          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
+        <g transform="translate(71.71,9.3)" id="img-9b208edd-21" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M-57.1,0 L57.1,0 " class="primitive"/>
         </g>
       </g>
-      <g class="plotpanel" id="img-d8091abc-29">
+      <g class="guide xgridlines yfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="img-9b208edd-22">
+        <g transform="translate(20.06,43.83)" id="img-9b208edd-23" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
+        </g>
+        <g transform="translate(54.5,43.83)" id="img-9b208edd-24" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
+        </g>
+        <g transform="translate(88.93,43.83)" id="img-9b208edd-25" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
+        </g>
+        <g transform="translate(123.37,43.83)" id="img-9b208edd-26" gadfly:scale="1.0" visibility="visible">
+          <path fill="none" d="M0,-38.83 L0,38.83 " class="primitive"/>
+        </g>
+      </g>
+      <g class="plotpanel" id="img-9b208edd-27">
         <metadata>
-          <boundingbox value="14.617350260416671mm 5.0mm 111.46389638487895mm 77.65676812065972mm"/>
-          <unitbox value="0.8404451149148866 4.186889503344974 3.319109770170227 -3.3737790066899467"/>
+          <boundingbox value="14.617350260416671mm 5.0mm 114.19389584234423mm 77.65676812065972mm"/>
+          <unitbox value="0.8419205578396415 4.186889503344974 3.316158884320717 -3.3737790066899467"/>
         </metadata>
-        <g class="geometry" id="img-d8091abc-30">
-          <g stroke-width="0.3" id="img-d8091abc-31">
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-32">
-              <g class="marker" id="img-d8091abc-33">
-                <g transform="translate(119.04,10.45)" id="img-d8091abc-34">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-35">
-              <g class="marker" id="img-d8091abc-36">
-                <g transform="translate(85.46,10.45)" id="img-d8091abc-37">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-38">
-              <g class="marker" id="img-d8091abc-39">
-                <g transform="translate(18.3,10.45)" id="img-d8091abc-40">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-41">
-              <g class="marker" id="img-d8091abc-42">
-                <g transform="translate(51.88,33.47)" id="img-d8091abc-43">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-44">
-              <g class="marker" id="img-d8091abc-45">
-                <g transform="translate(119.04,56.49)" id="img-d8091abc-46">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_μ" fill-opacity="1" stroke="#000000" fill="#D4CA3A" id="img-d8091abc-47">
-              <g class="marker" id="img-d8091abc-48">
-                <g transform="translate(119.04,79.51)" id="img-d8091abc-49">
-                  <path d="M-1.41,-1.41 L-1.41,1.41 1.41,1.41 1.41,-1.41  z" class="primitive"/>
-                </g>
-              </g>
-            </g>
-            <g class="color_σ" fill-opacity="1" stroke="#000000" fill="#00BFFF" id="img-d8091abc-50">
-              <g class="marker" id="img-d8091abc-51">
-                <g transform="translate(88.82,8.15)" id="img-d8091abc-52">
+        <g class="geometry" id="img-9b208edd-28">
+          <g stroke-width="0.3" id="img-9b208edd-29">
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-30">
+              <g class="marker" id="img-9b208edd-31">
+                <g transform="translate(121.65,10.45)" id="img-9b208edd-32">
                   <circle cx="0" cy="0" r="2" class="primitive"/>
                 </g>
               </g>
             </g>
-            <g class="color_σ" fill-opacity="1" stroke="#000000" fill="#00BFFF" id="img-d8091abc-53">
-              <g class="marker" id="img-d8091abc-54">
-                <g transform="translate(122.4,31.17)" id="img-d8091abc-55">
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-33">
+              <g class="marker" id="img-9b208edd-34">
+                <g transform="translate(87.21,10.45)" id="img-9b208edd-35">
                   <circle cx="0" cy="0" r="2" class="primitive"/>
                 </g>
               </g>
             </g>
-            <g class="color_σ" fill-opacity="1" stroke="#000000" fill="#00BFFF" id="img-d8091abc-56">
-              <g class="marker" id="img-d8091abc-57">
-                <g transform="translate(88.82,31.17)" id="img-d8091abc-58">
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-36">
+              <g class="marker" id="img-9b208edd-37">
+                <g transform="translate(18.34,10.45)" id="img-9b208edd-38">
                   <circle cx="0" cy="0" r="2" class="primitive"/>
                 </g>
               </g>
             </g>
-            <g class="color_σ" fill-opacity="1" stroke="#000000" fill="#00BFFF" id="img-d8091abc-59">
-              <g class="marker" id="img-d8091abc-60">
-                <g transform="translate(122.4,54.19)" id="img-d8091abc-61">
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-39">
+              <g class="marker" id="img-9b208edd-40">
+                <g transform="translate(52.77,33.47)" id="img-9b208edd-41">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-42">
+              <g class="marker" id="img-9b208edd-43">
+                <g transform="translate(121.65,56.49)" id="img-9b208edd-44">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_IZ" fill-opacity="1" stroke="#000000" fill="#7ECC5F" id="img-9b208edd-45">
+              <g class="marker" id="img-9b208edd-46">
+                <g transform="translate(121.65,79.51)" id="img-9b208edd-47">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_ZI" fill-opacity="1" stroke="#000000" fill="#B053EC" id="img-9b208edd-48">
+              <g class="marker" id="img-9b208edd-49">
+                <g transform="translate(90.65,8.15)" id="img-9b208edd-50">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_ZI" fill-opacity="1" stroke="#000000" fill="#B053EC" id="img-9b208edd-51">
+              <g class="marker" id="img-9b208edd-52">
+                <g transform="translate(125.09,31.17)" id="img-9b208edd-53">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_ZI" fill-opacity="1" stroke="#000000" fill="#B053EC" id="img-9b208edd-54">
+              <g class="marker" id="img-9b208edd-55">
+                <g transform="translate(90.65,31.17)" id="img-9b208edd-56">
+                  <circle cx="0" cy="0" r="2" class="primitive"/>
+                </g>
+              </g>
+            </g>
+            <g class="color_ZI" fill-opacity="1" stroke="#000000" fill="#B053EC" id="img-9b208edd-57">
+              <g class="marker" id="img-9b208edd-58">
+                <g transform="translate(125.09,54.19)" id="img-9b208edd-59">
                   <circle cx="0" cy="0" r="2" class="primitive"/>
                 </g>
               </g>
@@ -15093,44 +15073,44 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
           </g>
         </g>
       </g>
-      <g fill-opacity="0" class="guide crosshair" id="img-d8091abc-62">
-        <g class="text_box" fill="#000000" id="img-d8091abc-63">
-          <g transform="translate(119.03,5.53)" id="img-d8091abc-64">
+      <g fill-opacity="0" class="guide crosshair" id="img-9b208edd-60">
+        <g class="text_box" fill="#000000" id="img-9b208edd-61">
+          <g transform="translate(121.76,5.53)" id="img-9b208edd-62">
             <g class="primitive">
               <text text-anchor="end" dy="0.6em"></text>
             </g>
           </g>
         </g>
       </g>
-      <g fill-opacity="0" class="guide helpscreen" id="img-d8091abc-65">
-        <g class="text_box" id="img-d8091abc-66">
-          <g fill="#000000" id="img-d8091abc-67">
-            <g transform="translate(70.35,43.83)" id="img-d8091abc-68">
+      <g fill-opacity="0" class="guide helpscreen" id="img-9b208edd-63">
+        <g class="text_box" id="img-9b208edd-64">
+          <g fill="#000000" id="img-9b208edd-65">
+            <g transform="translate(71.71,43.83)" id="img-9b208edd-66">
               <path d="M-29.41,-9.72 L29.41,-9.72 29.41,9.72 -29.41,9.72  z" class="primitive"/>
             </g>
           </g>
-          <g fill="#FFFF74" font-size="3.88" font-family="CMU Serif" id="img-d8091abc-69">
-            <g transform="translate(70.35,36.76)" id="img-d8091abc-70">
+          <g fill="#FFFF74" font-size="3.88" font-family="CMU Serif" id="img-9b208edd-67">
+            <g transform="translate(71.71,36.76)" id="img-9b208edd-68">
               <g class="primitive">
                 <text text-anchor="middle" dy="0.35em">h,j,k,l,arrows,drag to pan</text>
               </g>
             </g>
-            <g transform="translate(70.35,40.29)" id="img-d8091abc-71">
+            <g transform="translate(71.71,40.29)" id="img-9b208edd-69">
               <g class="primitive">
                 <text text-anchor="middle" dy="0.35em">i,o,+,-,scroll,shift-drag to zoom</text>
               </g>
             </g>
-            <g transform="translate(70.35,43.83)" id="img-d8091abc-72">
+            <g transform="translate(71.71,43.83)" id="img-9b208edd-70">
               <g class="primitive">
                 <text text-anchor="middle" dy="0.35em">r,dbl-click to reset</text>
               </g>
             </g>
-            <g transform="translate(70.35,47.36)" id="img-d8091abc-73">
+            <g transform="translate(71.71,47.36)" id="img-9b208edd-71">
               <g class="primitive">
                 <text text-anchor="middle" dy="0.35em">c for coordinates</text>
               </g>
             </g>
-            <g transform="translate(70.35,50.9)" id="img-d8091abc-74">
+            <g transform="translate(71.71,50.9)" id="img-9b208edd-72">
               <g class="primitive">
                 <text text-anchor="middle" dy="0.35em">? for help</text>
               </g>
@@ -15138,9 +15118,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
           </g>
         </g>
       </g>
-      <g fill-opacity="0" class="guide questionmark" id="img-d8091abc-75">
-        <g class="text_box" fill="#000000" id="img-d8091abc-76">
-          <g transform="translate(126.08,5.53)" id="img-d8091abc-77">
+      <g fill-opacity="0" class="guide questionmark" id="img-9b208edd-73">
+        <g class="text_box" fill="#000000" id="img-9b208edd-74">
+          <g transform="translate(128.81,5.53)" id="img-9b208edd-75">
             <g class="primitive">
               <text text-anchor="end" dy="0.6em">?</text>
             </g>
@@ -15149,30 +15129,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       </g>
     </g>
   </g>
-  <g class="guide ylabels" font-size="3.88" font-family="CMU Serif" fill="#6C606B" id="img-d8091abc-78">
-    <g transform="translate(13.62,78.35)" id="img-d8091abc-79" gadfly:scale="1.0" visibility="visible">
+  <g class="guide ylabels" font-size="3.88" font-family="CMU Serif" fill="#6C606B" id="img-9b208edd-76">
+    <g transform="translate(13.62,78.35)" id="img-9b208edd-77" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="end" dy="0.35em">1</text>
       </g>
     </g>
-    <g transform="translate(13.62,55.34)" id="img-d8091abc-80" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(13.62,55.34)" id="img-9b208edd-78" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="end" dy="0.35em">2</text>
       </g>
     </g>
-    <g transform="translate(13.62,32.32)" id="img-d8091abc-81" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(13.62,32.32)" id="img-9b208edd-79" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="end" dy="0.35em">3</text>
       </g>
     </g>
-    <g transform="translate(13.62,9.3)" id="img-d8091abc-82" gadfly:scale="1.0" visibility="visible">
+    <g transform="translate(13.62,9.3)" id="img-9b208edd-80" gadfly:scale="1.0" visibility="visible">
       <g class="primitive">
         <text text-anchor="end" dy="0.35em">4</text>
       </g>
     </g>
   </g>
-  <g font-size="3.88" font-family="CMU Serif" fill="#564A55" stroke="#000000" stroke-opacity="0.000" id="img-d8091abc-83">
-    <g transform="translate(8.9,43.83)" id="img-d8091abc-84">
+  <g font-size="3.88" font-family="CMU Serif" fill="#564A55" stroke="#000000" stroke-opacity="0.000" id="img-9b208edd-81">
+    <g transform="translate(8.9,43.83)" id="img-9b208edd-82">
       <g class="primitive">
         <text text-anchor="end" dy="0.35em">y</text>
       </g>
@@ -15180,8 +15160,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
   </g>
 </g>
 <defs>
-  <clipPath id="img-d8091abc-15">
-    <path d="M14.62,5 L126.08,5 126.08,82.66 14.62,82.66 " />
+  <clipPath id="img-9b208edd-13">
+    <path d="M14.62,5 L128.81,5 128.81,82.66 14.62,82.66 " />
   </clipPath>
 </defs>
 <script> <![CDATA[
@@ -16294,24 +16274,40 @@ return Gadfly;
           factory(glob.Snap, glob.Gadfly);
       }
 })(window, function (Snap, Gadfly) {
-    var fig = Snap("#img-d8091abc");
-fig.select("#img-d8091abc-4")
+    var fig = Snap("#img-9b208edd");
+fig.select("#img-9b208edd-4")
    .drag(function() {}, function() {}, function() {});
-fig.select("#img-d8091abc-16")
+fig.select("#img-9b208edd-6")
+   .data("color_class", "color_ZI")
+.click(Gadfly.colorkey_swatch_click)
+;
+fig.select("#img-9b208edd-7")
+   .data("color_class", "color_IZ")
+.click(Gadfly.colorkey_swatch_click)
+;
+fig.select("#img-9b208edd-9")
+   .data("color_class", "color_ZI")
+.click(Gadfly.colorkey_swatch_click)
+;
+fig.select("#img-9b208edd-10")
+   .data("color_class", "color_IZ")
+.click(Gadfly.colorkey_swatch_click)
+;
+fig.select("#img-9b208edd-14")
    .init_gadfly();
-fig.select("#img-d8091abc-19")
+fig.select("#img-9b208edd-17")
    .plotroot().data("unfocused_ygrid_color", "#D0D0E0")
 ;
-fig.select("#img-d8091abc-19")
+fig.select("#img-9b208edd-17")
    .plotroot().data("focused_ygrid_color", "#A0A0A0")
 ;
-fig.select("#img-d8091abc-24")
+fig.select("#img-9b208edd-22")
    .plotroot().data("unfocused_xgrid_color", "#D0D0E0")
 ;
-fig.select("#img-d8091abc-24")
+fig.select("#img-9b208edd-22")
    .plotroot().data("focused_xgrid_color", "#A0A0A0")
 ;
-fig.select("#img-d8091abc-76")
+fig.select("#img-9b208edd-74")
    .mouseenter(Gadfly.helpscreen_visible)
 .mouseleave(Gadfly.helpscreen_hidden)
 ;

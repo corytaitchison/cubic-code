@@ -1055,27 +1055,30 @@ Plots a logical operator, `L`, given lattice with dimension `dim`. `x,y` keyword
 arguments refer to what lattice axis to put on the plotting axes. Jitter is applied
 to each point to distinguish between the two single-qubit operators.
 """
-function plotLogical(L, dim, args...; x=1, y=2, jitter=0.05, lookup=1:prod(dim), kwargs...)
+function plotLogical(L, dim, args...; x=1, y=2, jitter=0.05, name = "X", lookup=1:prod(dim), kwargs...)
     points = findOnes(L);
     temp = qubitsToXYZ(points, dim...; lookup=lookup);
     second(x) = x[2];
     coords = second.(temp);
     qubits = map(first.(temp)) do group 
-        group == 0 ? "σ" : "μ"
+        group == 0 ? name*"I" : "I"*name
     end;
+    shape = name == "X" ? Shape.utriangle : Shape;
     jit = map(first.(temp)) do group 
         group == 0 ? jitter : -jitter
     end;
     xs = getindex.(coords, x) .+ jit;
     ys = getindex.(coords, y) .+ jit;
-    plot(x=xs, y=ys, color=qubits, shape=qubits, Geom.point,
+    plot(x=xs, y=ys, color=qubits, shape=[shape], Geom.point,
         Guide.xlabel("$(('x','y','z')[x])"),
         Guide.ylabel("$(('x','y','z')[y])"),
-        Guide.shapekey(title="Qubit"),
+        Guide.colorkey(title=""),
+        Guide.shapekey(nothing),
         Coord.cartesian(xmin=1-0.1, xmax=dim[x]+0.1, 
             ymin=1-0.1, ymax=dim[y]+0.1),
         Guide.xticks(ticks=1:dim[x]),
         Guide.yticks(ticks=1:dim[y]),
+        Scale.color_discrete(p -> [colorant"rgb(176, 83, 236)", colorant"rgb(126, 204, 95)"]),
         args...; kwargs...
     )
 end;
